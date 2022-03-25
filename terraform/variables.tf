@@ -6,3 +6,7 @@ variable CLUSTER_NAME {}
 variable "INSTANCE_TYPE" {}
 variable "DESIRED_CAPACITY" {}
 variable "REGION" {}
+variable "MAX_CAPACITY" {}
+variable "MIN_CAPACITY" {}
+variable "VOLUME_TYPE" {}
+variable "VOLUME_SIZE" {}

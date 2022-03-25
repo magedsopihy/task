@@ -14,6 +14,11 @@ module "eks" {
   PRIVATE_SUBNETS  = module.vpc.private_subnets
   INSTANCE_TYPE    = var.INSTANCE_TYPE
   DESIRED_CAPACITY = var.DESIRED_CAPACITY
+  MAX_CAPACITY     = var.MAX_CAPACITY
+  MIN_CAPACITY     = var.MIN_CAPACITY
+  VOLUME_TYPE      = var.VOLUME_TYPE
+  VOLUME_SIZE      = var.VOLUME_SIZE
+
 }
 
 resource "null_resource" "kubectl" {
@@ -22,4 +27,4 @@ resource "null_resource" "kubectl" {
     command = "aws eks --region ${var.REGION} update-kubeconfig --name ${var.CLUSTER_NAME}"
   }
 }
- 
+

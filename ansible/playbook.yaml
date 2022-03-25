@@ -7,3 +7,29 @@
       api_version: v1
       kind: Namespace
       state: present
+
+  - name: Create a service Accouunt for jenkins 
+    k8s:
+      state: present
+      src: ./serviceAccount.yaml   
+  
+  - name: Create a volume for jenkins pod 
+    k8s:
+      state: present
+      src: ./volume.yaml   
+
+  - name: Create a Deployment for node app 
+    k8s:
+      state: present
+      src: ./deployment.yaml
+
+  - name: Create a secret for jenkins user 
+    k8s:
+      state: present
+      src: ./secret.yaml
+
+  - name: expose jenkins via loadblancer 
+    k8s:
+      state: present
+      src: ./service.yaml   
+
