@@ -28,16 +28,16 @@ spec:
               memory: "500Mi"
               cpu: "500m"
           env:
-          - name: JENKINS_PASSWORD
+            - name: JENKINS_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: my-secret
                   key: JENKINS_PASSWORD
-          - name: JENKINS_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: my-secret
-                key: JENKINS_USERNAME    
+            - name: JENKINS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: JENKINS_USERNAME    
           ports:
             - name: httpport
               containerPort: 8080
