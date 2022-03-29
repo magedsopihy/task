@@ -67,16 +67,24 @@ pipeline {
       }
     }
 
-    stage('Deploy App to Kubernetes') {     
-      steps {
+    // stage('Deploy App to Kubernetes') {     
+    //   steps {
         
-          withCredentials([file(credentialsId: 'KUBE_CONFIG', variable: 'KUBECONFIG')]) {
-            sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" app-deployment.yaml'
-            sh 'kubectl apply -f app-deployment.yaml'
-          }
+    //       withCredentials([file(credentialsId: 'KUBE_CONFIG', variable: 'KUBECONFIG')]) {
+    //         sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" app-deployment.yaml'
+    //         sh 'kubectl apply -f app-deployment.yaml'
+    //       }
         
-      }
+    //   }
+    // }
+
+    stage('List pods') {
+    withKubeConfig([credentialsId: 'KUBE_CONFIG']) {
+        sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+        sh 'chmod u+x ./kubectl'  
+        sh './kubectl apply -f app-deployment.yaml'
     }
+  }
   
   }
 }
