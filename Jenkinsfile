@@ -69,12 +69,12 @@ pipeline {
 
     stage('Deploy App to Kubernetes') {     
       steps {
-        container('kubectl') {
+        
           withCredentials([file(credentialsId: 'KUBE_CONFIG', variable: 'KUBECONFIG')]) {
             sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" app-deployment.yaml'
             sh 'kubectl apply -f app-deployment.yaml'
           }
-        }
+        
       }
     }
   
