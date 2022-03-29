@@ -4,6 +4,8 @@ metadata:
   name: kaniko
   namespace: jenkins
 spec:
+  serviceAccountName: jenkins-admin
+  automountServiceAccountToken: false
   containers:
   - name: kubectl
     image: alpine/k8s:1.21.5
