@@ -53,19 +53,19 @@ pipeline {
 
   stages {
 
-    stage('Kaniko Build & Push Image') {
-      steps {
-        container('kaniko') {
-          script {
-            sh '''
-            /kaniko/executor --dockerfile `pwd`/Dockerfile \
-                             --context `pwd` \
-                             --destination=magedsopihy/task:${BUILD_NUMBER}
-            '''
-          }
-        }
-      }
-    }
+    // stage('Kaniko Build & Push Image') {
+    //   steps {
+    //     container('kaniko') {
+    //       script {
+    //         sh '''
+    //         /kaniko/executor --dockerfile `pwd`/Dockerfile \
+    //                          --context `pwd` \
+    //                          --destination=magedsopihy/task:${BUILD_NUMBER}
+    //         '''
+    //       }
+    //     }
+    //   }
+    // }
 
     // stage('Deploy App to Kubernetes') {     
     //   steps {
