@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: kubectl
-    image: joshendriks/alpine-k8s
+    image: alpine/k8s:1.21.5
     command:
     - /bin/cat
     tty: true    
