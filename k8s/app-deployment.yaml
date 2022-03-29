@@ -16,6 +16,21 @@ spec:
     spec:
       containers:
       - name: task
-        image: magedsopihy/task:v2
+        image: magedsopihy/task:<TAG>
         ports:
         - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: task      
+  name: task
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: task
+  type: LoadBalancer         
