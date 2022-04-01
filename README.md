@@ -41,7 +41,7 @@ VPC and EKS modules used with this configration
 - autoscallinig group is set to  max=> 3, min=>1, desired=>2.
 - persistent volume is to genrnal purpose 2 gp2 with size of 30g.
 
-after the EKS id provisioned local provider used to deploy jenkins by ansible playbook.
+after the EKS is provisioned local provider used to deploy jenkins by ansible playbook.
 
 commands used to provision the cluster
 - terraform init 
