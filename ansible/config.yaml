@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-plugins
+  namespace: jenkins
+data:
+  jenkins-plugins: |
+      git:4.11.0
+      docker-plugin:1.2.6
+      ssh:2.6.1
+      ssh-agent:1.24.1
+      kubernetes:3578.vb_9a_92ea_9845a_
+      kubernetes-cli:1.10.3    
+    

@@ -19,7 +19,10 @@ spec:
       serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
-          image: magedsopihy/jenkins:v3.0
+          image: jenkins/jenkins:lts
+          env:
+          - name: JAVA_OPTS
+            value: "-Djenkins.install.runSetupWizard=false"
           resources:
             limits:
               memory: "2Gi"
@@ -27,17 +30,6 @@ spec:
             requests:
               memory: "500Mi"
               cpu: "500m"
-          env:
-            - name: JENKINS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: JENKINS_PASSWORD
-            - name: JENKINS_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret
-                  key: JENKINS_USERNAME    
           ports:
             - name: httpport
               containerPort: 8080
@@ -58,12 +50,26 @@ spec:
             initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 5
-            failureThreshold: 3
+            failureThreshold: 3      
           volumeMounts:
             - name: jenkins-data
-              mountPath: /var/jenkins_home     
+              mountPath: /var/jenkins_home 
+      initContainers:    
+      - name: install-plugins
+        image: jenkins/jenkins:lts
+        command:
+          - /bin/sh
+          - -c
+          - install-plugins.sh < /etc/config/jenkins-plugins
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: jenkins-data 
+        - name: config-volume
+          mountPath: /etc/config            
       volumes:
         - name: jenkins-data
           persistentVolumeClaim:
               claimName: jenkins-pv-claim
-        
+        - name: config-volume
+          configMap:
+            name: jenkins-plugins
