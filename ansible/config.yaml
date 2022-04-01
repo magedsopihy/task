@@ -10,5 +10,6 @@ data:
       ssh:2.6.1
       ssh-agent:1.24.1
       kubernetes:3578.vb_9a_92ea_9845a_
-      kubernetes-cli:1.10.3    
+      kubernetes-cli:1.10.3
+      workflow-aggregator:2.7
     
