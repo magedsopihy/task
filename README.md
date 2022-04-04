@@ -13,7 +13,7 @@
 ### building the app
 ----
 the build with nodejs and express framework
-you can run the locally by cloning the repo in cd insde app directory the run \
+you can run the locally by cloning the repo and cd insde app directory the run \
 node app.js
 
 ### decorize the app
@@ -35,7 +35,7 @@ commands used to build and test the app locally
 
 I used terraform to provision EKS cluster and kept my code moduled \
 VPC and EKS modules used with this configration
-- three private subnets for in three 3 azs used for worker nodes.
+- three private subnets in three 3 azs used for worker nodes.
 - three public subnet in three azs used for loadbancers.
 - t2.small type is used for worker nodes.
 - autoscallinig group is set to  max=> 3, min=>1, desired=>2.
