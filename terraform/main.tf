@@ -28,3 +28,11 @@ resource "null_resource" "kubectl" {
   }
 }
 
+resource "null_resource" "ansible" {
+  depends_on = [null_resource.kubectl]
+  provisioner "local-exec" {
+    command = "ansible-playbook playbook.yaml"
+    working_dir = "../ansible"
+  }
+}
+
