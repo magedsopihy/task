@@ -13,12 +13,13 @@ COPY ./app/package*.json ./
 RUN npm ci --only=production
 
 # Bundle app source
-COPY . .
+COPY ./app ./
 
 
 FROM node:16-alpine
 USER node
-COPY --from=build /app /app
 WORKDIR /app
+COPY --from=build /app /app
+
 EXPOSE 3000
 CMD [ "node", "app.js" ]

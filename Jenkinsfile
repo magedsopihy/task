@@ -67,7 +67,7 @@ pipeline {
       }
     }
 
-    stage('Deploy App to Kubernetes') {     
+    stage('Deploy App to Kubernetes') {    
       steps {
         container('kubectl') {
 
