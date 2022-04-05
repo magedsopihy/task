@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: task-deployment
+  namespace: default
   labels:
     app: task
 spec:
@@ -27,6 +28,7 @@ metadata:
   labels:
     app: task      
   name: task
+  namespace: default
 spec:
   ports:
   - port: 80
