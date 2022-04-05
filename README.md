@@ -66,3 +66,12 @@ ansible k8s module is used to deploy in the cluster with objects
 - Kaniko is used to build the image inside the jenkins container to avoid giving containers elevated privileges 
   when performing container image builds with docker.
 - another container equipped with kubectl utility used to depoly the app to cluster.
+
+### In real-life deployment we can include
+----
+
+- git workflow that include multiple branches for every stage and jenkins pipline for every stage.
+- code quality and security like sonarqube.
+- domain and expose the apps in the cluster via ingress with https enabled.
+- git hooks to trigger builds with code commits.
+- rbac third party solution.
