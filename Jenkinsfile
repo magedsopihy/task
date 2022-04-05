@@ -72,7 +72,8 @@ pipeline {
         container('kubectl') {
 
           // withCredentials([file(credentialsId: 'KUBE_CONFIG', variable: 'KUBECONFIG')]) 
-          kubernetesDeploy(configs: "kubeconfig_task_eks", kubeconfigId: "KUBE_CONFIG")
+          // kubernetesDeploy(configs: "kubeconfig_task_eks", kubeconfigId: "KUBE_CONFIG")
+          withKubeConfig([credentialsId: 'KUBE_CONFIG', serverUrl: 'https://52187D986E76EF32CB6AD5396841A1B2.gr7.eu-west-3.eks.amazonaws.com'])
           {
             sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" app-deployment.yaml'
             sh 'kubectl apply -f app-deployment.yaml'
