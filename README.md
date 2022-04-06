@@ -74,4 +74,4 @@ ansible k8s module is used to deploy in the cluster with objects
 - code quality and security like sonarqube.
 - domain and expose the apps in the cluster via ingress with https enabled.
 - git hooks to trigger builds with code commits.
-- rbac third party solution.
+
