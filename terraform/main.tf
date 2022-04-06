@@ -18,6 +18,7 @@ module "eks" {
   MIN_CAPACITY     = var.MIN_CAPACITY
   VOLUME_TYPE      = var.VOLUME_TYPE
   VOLUME_SIZE      = var.VOLUME_SIZE
+  LOGS_TYPES       = var.LOGS_TYPES
 
 }
 
@@ -31,7 +32,7 @@ resource "null_resource" "kubectl" {
 resource "null_resource" "ansible" {
   depends_on = [null_resource.kubectl]
   provisioner "local-exec" {
-    command = "ansible-playbook playbook.yaml"
+    command     = "ansible-playbook playbook.yaml"
     working_dir = "../ansible"
   }
 }

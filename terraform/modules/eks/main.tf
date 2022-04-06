@@ -1,15 +1,15 @@
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "17.24.0"
-  cluster_name    = var.CLUSTER_NAME
-  cluster_version = "1.20"
-  vpc_id          = var.VPC_ID
-  subnets         = var.PRIVATE_SUBNETS
-
+  source                    = "terraform-aws-modules/eks/aws"
+  version                   = "17.24.0"
+  cluster_name              = var.CLUSTER_NAME
+  cluster_version           = "1.20"
+  vpc_id                    = var.VPC_ID
+  subnets                   = var.PRIVATE_SUBNETS
+  cluster_enabled_log_types = var.LOGS_TYPES
 
   workers_group_defaults = {
-    root_volume_type = var.VOLUME_TYPE 
-    root_volume_size = var.VOLUME_SIZE 
+    root_volume_type = var.VOLUME_TYPE
+    root_volume_size = var.VOLUME_SIZE
     public_ip        = false
   }
 
