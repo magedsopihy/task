@@ -8,4 +8,5 @@ variable "MIN_CAPACITY" {}
 variable "VOLUME_TYPE" {}
 variable "VOLUME_SIZE" {}
 variable "LOGS_TYPES" {}
+variable "MY_IP" {}
 

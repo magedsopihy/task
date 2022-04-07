@@ -19,7 +19,7 @@ module "eks" {
   VOLUME_TYPE      = var.VOLUME_TYPE
   VOLUME_SIZE      = var.VOLUME_SIZE
   LOGS_TYPES       = var.LOGS_TYPES
-
+  MY_IP            = var.MY_IP
 }
 
 resource "null_resource" "kubectl" {

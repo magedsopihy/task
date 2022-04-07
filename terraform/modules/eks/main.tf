@@ -6,6 +6,7 @@ module "eks" {
   vpc_id                    = var.VPC_ID
   subnets                   = var.PRIVATE_SUBNETS
   cluster_enabled_log_types = var.LOGS_TYPES
+  cluster_endpoint_public_access_cidrs = var.MY_IP
 
   workers_group_defaults = {
     root_volume_type = var.VOLUME_TYPE
@@ -33,3 +34,4 @@ data "aws_eks_cluster" "cluster" {
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_id
 }
+
